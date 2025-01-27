@@ -1,146 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Login Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <style>
-        body {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background-image: url("https://cdn.mos.cms.futurecdn.net/Q75Kn7DuqB67sM66FVweNb.jpg"); /* The image used */
-            background-color: #cccccc; /* Used if the image is unavailable */
-            height: 500px; /* You must set a specified height */
-            background-position: center; /* Center the image */
-            background-repeat: no-repeat; /* Do not repeat the image */
-            background-size: cover; /* Resize the background image to cover the entire container */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Stock Prediction</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #add8e6, #87cefa, #b0e0e6);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Arial', sans-serif;
+    }
 
-            }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        .login-card {
-            background: lightblue;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
-            opacity: 0.8;
-        }
+    .container {
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .login-card h2 {
-            color: #6a11cb;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
+    h1 {
+      color: #5e35b1;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-        .input-group-text {
-            background-color: #6a11cb;
-            color: #fff;
-            border: none;
-            border-radius: 0.375rem 0 0 0.375rem;
-        }
+    .btn {
+      border-radius: 25px;
+      transition: transform 0.2s ease-in-out;
+    }
 
-        .input-group input {
-            border: none;
-            border-left: 1px solid #6a11cb;
-            border-radius: 0 0.375rem 0.375rem 0;
-            outline: none;
-        }
+    .btn:hover {
+      transform: scale(1.05);
+    }
 
-        .btn {
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
+    table {
+      margin-top: 20px;
+    }
 
-        .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
+    th {
+      background-color: #6a1b9a;
+      color: black;
+      text-align: center;
+    }
 
-        .btn-primary {
-            background-color: #6a11cb;
-            border-color: #6a11cb;
-        }
+    td {
+      text-align: center;
+    }
 
-        .btn-primary:hover {
-            background-color: #5633d3;
-            border-color: #5633d3;
-        }
+    .month-section {
+      margin-top: 30px;
+    }
 
-        hr {
-            margin: 30px 0;
-            border-top: 1px solid #ddd;
-        }
+    .month-header {
+      color: #333;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
 
-        .footer-text {
-            font-size: 0.9rem;
-            color: #6a11cb;
-        }
-
-        .footer-text a {
-            color: #6a11cb;
-            font-weight: 500;
-            text-decoration: none;
-        }
-
-        .footer-text a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .dropdown-menu {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  </style>
 </head>
 <body>
-    <form action="https://umaradnaan123.github.io/Project/">
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="login-card">
-            <h2>Ashok Leyland</h2>
-            <p class="text-muted mb-4">Login Form</p>
-            <form id="loginForm">
-                <div class="form-group mb-4">
-                <label for="email" class="form-label visually-hidden">Email Address</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        <input type="email" id="email" class="form-control" placeholder="Email Address" required>
-                    </div>
-                </div>
-                <div class="form-group mb-4">
-                    <label for="password" class="form-label visually-hidden">Password</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                        <input type="password" id="password" class="form-control" placeholder="Password" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
-                <p id="error-message" class="text-danger mt-3"></p>
-            </form>
-            <hr>
-            <p class="footer-text">Don't have an account? <a href="https://umaradnaan123.github.io/signup/">Sign Up</a></p>
-        </div>
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Month GB Requirement After OS</h1>
+    <div class="mb-3">
+      <label for="fileInput" class="form-label">Upload Excel File</label>
+      <input type="file" class="form-control" id="fileInput" accept=".xlsx, .xls">
     </div>
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault();
+    <button class="btn btn-primary w-100 mb-3" id="processButton">Process Data</button>
+    <div class="dropdown mb-3">
+      <button class="btn btn-info dropdown-toggle w-100" type="button" id="monthDropdown" data-bs-toggle="dropdown" aria-expanded="false" disabled>
+        Select Month
+      </button>
+      <ul class="dropdown-menu w-100" id="dropdownMenu"></ul>
+    </div>
+    <button class="btn btn-secondary w-100 mb-3" id="viewButton" onclick="viewData()" disabled>View Input Data</button>
+    <button class="btn btn-success w-100 mb-3" id="downloadButton" onclick="downloadExcel()" disabled>Download Calculated Output</button>
+    <div id="resultContainer" class="mt-5"></div>
+  </div>
 
-            const validEmail = "user@example.com";
-            const validPassword = "password123";
+  <!-- Import SheetJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let workbook; // Store workbook data
+    let processedData = []; // Store processed data for export
+    let currentMonth = ""; // Store current selected month
 
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+    document.getElementById("processButton").addEventListener("click", processExcel);
 
-            const errorMessage = document.getElementById("error-message");
+    function processExcel() {
+      const fileInput = document.getElementById("fileInput");
+      const resultContainer = document.getElementById("resultContainer");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      const monthDropdown = document.getElementById("monthDropdown");
 
-            if (email === validEmail && password === validPassword) {
-                alert("Login successful! Redirecting...");
-                window.location.href = "next-page.html";
-            } else {
-                errorMessage.textContent = "Invalid email or password. Please try again.";
-            }
+      resultContainer.innerHTML = ""; // Clear previous results
+      dropdownMenu.innerHTML = ""; // Clear dropdown menu
+      monthDropdown.disabled = true;
+      document.getElementById("viewButton").disabled = true;
+      document.getElementById("downloadButton").disabled = true;
+
+      if (!fileInput.files.length) {
+        alert("Please upload an Excel file.");
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const data = new Uint8Array(e.target.result);
+        workbook = XLSX.read(data, { type: "array" });
+
+        if (!workbook.Sheets["Monthly Opening Stock"] || !workbook.Sheets["3 Month Plan"]) {
+          alert("Ensure the Excel file has sheets named 'Monthly Opening Stock' and '3 Month Plan'.");
+          return;
+        }
+
+        const planSheet = XLSX.utils.sheet_to_json(workbook.Sheets["3 Month Plan"]);
+        const osSheet = XLSX.utils.sheet_to_json(workbook.Sheets["Monthly Opening Stock"]);
+
+        if (!planSheet.length || !osSheet.length) {
+          alert("One or more required sheets are empty.");
+          return;
+        }
+
+        // Extract unique month names
+        const monthHeaders = Array.from(
+          new Set(
+            Object.keys(planSheet[0])
+              .filter(header => header.match(/W[1-4]/)) // Matches headers containing "W1", "W2", etc.
+              .map(header => header.split(" W")[0].trim()) // Extract the month part
+          )
+        );
+
+        if (!monthHeaders.length) {
+          alert("No valid monthly data (W1-W4) found in the sheet.");
+          return;
+        }
+
+        // Populate dropdown menu
+        monthHeaders.forEach(month => {
+          const listItem = document.createElement("li");
+          listItem.innerHTML = `<a class="dropdown-item" href="#" onclick="showMonthData('${month}')">${month}</a>`;
+          dropdownMenu.appendChild(listItem);
         });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        monthDropdown.disabled = false;
+        document.getElementById("viewButton").disabled = false;
+        document.getElementById("downloadButton").disabled = false;
+        alert("File processed successfully. Select a month to view weekly data.");
+      };
+
+      reader.readAsArrayBuffer(file);
+    }
+
+    function showMonthData(month) {
+      currentMonth = month; // Update current selected month
+      const resultContainer = document.getElementById("resultContainer");
+      const planSheet = XLSX.utils.sheet_to_json(workbook.Sheets["3 Month Plan"]);
+      const osSheet = XLSX.utils.sheet_to_json(workbook.Sheets["Monthly Opening Stock"]);
+
+      resultContainer.innerHTML = ""; // Clear previous results
+
+      // Create a section for the current month
+      const monthSection = document.createElement("div");
+      monthSection.innerHTML = `<h2>Results for ${month}</h2>`;
+
+      const table = document.createElement("table");
+      table.className = "table table-bordered table-striped";
+      const tableHeader = document.createElement("thead");
+      const tableBody = document.createElement("tbody");
+
+      // Filter headers based on the selected month
+      const filteredHeaders = Object.keys(planSheet[0]).filter(header => header.startsWith(month));
+
+      // Add table headers
+      let headerHTML = `<tr><th>GB</th><th>Opening Stock</th>`;
+      filteredHeaders.forEach(header => headerHTML += `<th>${header}</th>`);
+      headerHTML += `<th>Plan for W1</th><th>Plan for W2</th><th>Plan for W3</th><th>Plan for W4</th></tr>`;
+      tableHeader.innerHTML = headerHTML;
+
+      processedData = []; // Clear processed data for the new month
+
+      // Process rows
+      osSheet.forEach((row, i) => {
+        const tr = document.createElement("tr");
+
+        // Add "GB" and "Opening Stock" values
+        const gbValue = row["GB"] ?? 0;
+        const openingStock = parseFloat(row["Opening Stock"] ?? 0);
+        tr.innerHTML += `<td>${gbValue}</td><td>${openingStock}</td>`;
+
+        let rowData = { GB: gbValue, "Opening Stock": openingStock };
+
+        // Weekly plans and remaining stock
+        let remainingStock = openingStock;
+        let weeklyPlans = [];
+
+        filteredHeaders.forEach(header => {
+          const weekPlan = parseFloat(planSheet[i]?.[header] ?? 0);
+          const fulfilledPlan = Math.min(weekPlan, remainingStock); // Fulfilled from stock
+          const unmetPlan = weekPlan - fulfilledPlan; // Remaining unmet requirement
+          weeklyPlans.push(unmetPlan); // Save unmet plan for display
+          remainingStock -= fulfilledPlan; // Update remaining stock
+
+          rowData[header] = weekPlan;
+        });
+
+        filteredHeaders.forEach(header => {
+          const weekValue = parseFloat(planSheet[i]?.[header] ?? 0);
+          tr.innerHTML += `<td>${weekValue}</td>`;
+        });
+
+        weeklyPlans.forEach((plan, index) => {
+          const planHeader = `Plan for W${index + 1}`;
+          rowData[planHeader] = plan;
+          tr.innerHTML += `<td>${plan}</td>`;
+        });
+
+        processedData.push(rowData); // Add to processed data
+        tableBody.appendChild(tr);
+      });
+
+      table.appendChild(tableHeader);
+      table.appendChild(tableBody);
+      monthSection.appendChild(table);
+      resultContainer.appendChild(monthSection);
+    }
+
+    function viewData() {
+      if (!workbook) {
+        alert("No file uploaded.");
+        return;
+      }
+
+      const sheetNames = workbook.SheetNames;
+      alert(`Available Sheets: ${sheetNames.join(", ")}`);
+    }
+
+    function downloadExcel() {
+      if (!processedData.length) {
+        alert("No data to download. Select a month and process the data first.");
+        return;
+      }
+
+      const worksheet = XLSX.utils.json_to_sheet(processedData);
+      const newWorkbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(newWorkbook, worksheet, `${currentMonth} Processed Data`);
+      XLSX.writeFile(newWorkbook, `${currentMonth}_ProcessedData.xlsx`);
+    }
+  </script>
 </body>
 </html>
